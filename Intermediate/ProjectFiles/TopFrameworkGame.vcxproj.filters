@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\TopFrameworkGame.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{7016981F-5A4D-4996-8018-FB2B7780D642}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\TopFrameworkGame.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\TopFrameworkGameEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{B72B8F20-EEED-49EC-8F1D-D00ED28F44BF}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\TopFrameworkGame">
+			<UniqueIdentifier>{3177F020-5F21-49B4-8866-2DE80BA59FF2}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\TopFrameworkGame\TopFrameworkGame.Build.cs">
+			<Filter>Source\TopFrameworkGame</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\TopFrameworkGame\TopFrameworkGame.cpp">
+			<Filter>Source\TopFrameworkGame</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\TopFrameworkGame\TopFrameworkGame.h">
+			<Filter>Source\TopFrameworkGame</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\TopFrameworkGame\TopFrameworkGameCharacter.cpp">
+			<Filter>Source\TopFrameworkGame</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\TopFrameworkGame\TopFrameworkGameCharacter.h">
+			<Filter>Source\TopFrameworkGame</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\TopFrameworkGame\TopFrameworkGameGameMode.cpp">
+			<Filter>Source\TopFrameworkGame</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\TopFrameworkGame\TopFrameworkGameGameMode.h">
+			<Filter>Source\TopFrameworkGame</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\TopFrameworkGame\TopFrameworkGamePlayerController.cpp">
+			<Filter>Source\TopFrameworkGame</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\TopFrameworkGame\TopFrameworkGamePlayerController.h">
+			<Filter>Source\TopFrameworkGame</Filter>
+		</ClInclude >
+		<Filter Include="Source\TopFrameworkGame\Resources">
+			<UniqueIdentifier>{CDCFF5A0-EA6D-4E59-B417-524B9B96779D}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source\TopFrameworkGame\Resources\Windows">
+			<UniqueIdentifier>{9949397C-0997-4BF7-9EA9-52E12B0D5FB7}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\TopFrameworkGame\Resources\Windows\TopFrameworkGame.ico">
+			<Filter>Source\TopFrameworkGame\Resources\Windows</Filter>
+		</None >
+		<ResourceCompile Include="..\..\Source\TopFrameworkGame\Resources\Windows\TopFrameworkGame.rc">
+			<Filter>Source\TopFrameworkGame\Resources\Windows</Filter>
+		</ResourceCompile >
+	</ItemGroup>
+</Project>
