@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Bassie Short Term Loan Application</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <h:outputStylesheet name="css/default.css" />
+            <p><p:graphicImage name="images/logo.jpg" /></p>
+            <p:link style="font-size: 12px" outcome="approve" value="Back"/>
+            <p:separator style="background-color: darkcyan" />
+            Short Term Loan Application
+            <p:separator />
+            <h:form>
+                <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true" />
+                <p:panel id="personal" header="Personal Details" style="margin-bottom:10px;">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="idNo" value="ID Number:" />
+                        <p:inputText  id="idNo" value="#{loanApplicationBean.application.customer.identityNo}" required="true"/>
+
+                        <p:outputLabel for="contact" value="Contact Number:" />
+                        <p:inputText id="contact" value="#{loanApplicationBean.application.customer.cellPhoneNumber}" required="true"/>
+                    </h:panelGrid>
+                </p:panel>
+                <p:panel id="customer" header="Customer Details" style="margin-bottom:10px;">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="firstName" value="First Name:" />
+                        <p:inputText id="firstName" value="#{loanApplicationBean.application.customer.firstName}" required="true" readonly="false"/>
+
+                        <p:outputLabel for="lastName" value="Last Name:" />
+                        <p:inputText id="lastName" value="#{loanApplicationBean.application.customer.lastName}" readonly="false" required="true"/>
+                        
+                        <p:outputLabel for="email" value="Email Address:" />
+                        <p:inputText id="email" value="#{loanApplicationBean.application.customer.emailAddress}" readonly="false" required="true"/>
+                    </h:panelGrid>
+                </p:panel>
+                <p:panel id="loan" header="Loan Application Details" style="margin-bottom:10px;">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="amount" value="How much cash do you want?" />
+                        <p:inputText id="amount" value="#{loanApplicationBean.application.amount}" required="true"/>
+
+                        <p:outputLabel for="term" value="How long do you want it for?" />
+                        <p:spinner id="term" value="#{loanApplicationBean.application.term}" stepFactor="6" min="6" max="60" required="true"/>
+
+                        <p:outputLabel for="debt" value="Are you currently undergoing Debt Counseling?" />
+                        <p:selectOneRadio id="debt" value="#{loanApplicationBean.application.customer.underDebtCounseling}">
+                            <f:selectItem itemLabel="Yes" itemValue="Yes" />
+                            <f:selectItem itemLabel="No" itemValue="No" />
+                        </p:selectOneRadio>
+                    </h:panelGrid>
+                </p:panel>
+                <p:panel id="remunaration" header="Remuneration Details" style="margin-bottom:10px;">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="salary" value="Net Monthly Income" />
+                        <p:inputText id="salary" value="#{loanApplicationBean.application.customer.remuneration.salary}" required="true"/>
+
+                        <p:outputLabel for="expenses" value="Net Monthly Expenses" />
+                        <p:inputText id="expenses" value="#{loanApplicationBean.application.customer.remuneration.expenses}" required="true"/>
+                    </h:panelGrid>
+                </p:panel>
+                <p:separator style="background-color: darkcyan" />
+                <div align="right">
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                        <p:commandLink style="font-size: 12px" id="cancel" actionListener="#{loanApplicationBean.cancelApplication()}" ajax="false">
+                            <h:outputText value="Cancel" />
+                        </p:commandLink>
+                        <p:commandLink style="font-size: 12px" id="apply" actionListener="#{loanApplicationBean.apply()}" ajax="false">
+                            <h:outputText value="Apply" />
+                        </p:commandLink>
+                    </h:panelGrid>
+                </div> 
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="index.xhtml" x="180" y="142" zoom="false"/>
+        <Node id="newjsf.xhtml" x="48" y="51" zoom="true"/>
+        <Node id="welcomePrimefaces.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="approve.xhtml" x="969" y="296" zoom="true"/>
+        <Node id="apply.xhtml" x="642" y="352" zoom="true"/>
+        <Node id="index.html" x="188" y="322" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

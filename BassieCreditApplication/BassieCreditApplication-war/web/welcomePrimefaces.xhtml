@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Bassie Short Term Loan Application</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <h:outputStylesheet name="css/default.css" />
+            <p><p:graphicImage name="images/logo.jpg" /></p>
+            <p:link style="font-size: 12px" outcome="apply" value="Back"/>
+            <p:separator style="background-color: darkcyan" />
+            Short Term Loan Application
+            <p:separator />
+            <p:outputPanel deferred="true" deferredMode="visible">
+                <div><ol type="1"><li><p><b>Completion time:</b></p>
+                            <ul>
+                                <li>The pre-screening application process which will determine whether you qualify for an FNB loan will take about 2 minutes.</li>
+                                <li>After pre-screening and you are not declined, it will take about 8 minutes to complete the rest of the loan application.</li>
+                                <li>The application process will be as follows:
+                                    <ol type="1">
+                                        <li>Complete information required for Quick Scoring,</li>
+                                        <li>The system will score your application,</li>
+                                        <li>The outcome of the score will be displayed,</li>
+                                        <li>If application is not declined, then continue with application,</li>
+                                        <li>Process your application,</li>
+                                        <li>The outcome is displayed,</li>
+                                        <li>End of loan application process.</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                        </li><br/>
+                        <li>	
+                            <p><b>What you need before starting this application:</b></p>
+                            <ul>
+                                <li>You must be from the age of 18 to 63 years to apply</li>
+                                <li>You must be permanently employed for the past 6 months or self employed for the past 12 months</li>
+                                <li>You must be a permanent resident of South Africa</li>
+                                <li>South African ID book (green, bar-coded)</li>
+                                <li>An active bank account for 6 months with electronic salary deposits</li>
+                                <li>Proof of income (latest payslip and last 3 months bank statements)</li>
+                                <li>A minimum value of R2000 can be applied for</li>
+                            </ul>
+                        </li></ol></div><br/>
+            </p:outputPanel>
+            <p:separator/>
+            <h:form>
+                <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true" />
+                <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
+                    <p:selectManyCheckbox id="permission" value="#{loanApplicationBean.permissions}">
+                        <f:selectItem itemLabel="I give permission for you to do a credit check" itemValue="permission" />
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox style="" id="terms" value="#{loanApplicationBean.acceptedTerms}">
+                        <f:selectItem itemLabel="I have read and agree to the Terms and Conditions" itemValue="terms" />
+                    </p:selectManyCheckbox>
+                </h:panelGrid>
+                <p:separator style="background-color: darkcyan" />
+                <div align="right">
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                        <h:commandButton id="cancel" value="Cancel" actionListener="#{loanApplicationBean.cancelApplication()}"/>
+                       <h:commandButton id="startApplication" value="Start Application" actionListener="#{loanApplicationBean.startApplication()}"/>
+                    </h:panelGrid>
+                </div> 
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+
