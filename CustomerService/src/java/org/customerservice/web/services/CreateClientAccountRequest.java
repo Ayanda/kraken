@@ -12,14 +12,14 @@ package org.customerservice.web.services;
 public class CreateClientAccountRequest {
     
     private long IdNumber;
-    private long contactNumber;
+    private String contactNumber;
     private String firstName;
     private String lastName;
     private String emailAddress;
     
     public CreateClientAccountRequest(){}
 
-    public CreateClientAccountRequest(long IdNumber, long contactNumber, String firstName, String lastName, String emailAddress) {
+    public CreateClientAccountRequest(long IdNumber, String contactNumber, String firstName, String lastName, String emailAddress) {
         this.IdNumber = IdNumber;
         this.contactNumber = contactNumber;
         this.firstName = firstName;
@@ -35,11 +35,11 @@ public class CreateClientAccountRequest {
         this.IdNumber = IdNumber;
     }
 
-    public long getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(long contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 

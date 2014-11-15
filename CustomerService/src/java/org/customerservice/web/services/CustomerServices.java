@@ -42,7 +42,7 @@ public class CustomerServices {
     public CreateClientAccountServiceResponse createClientAccount(@WebParam(name = "createClientAccountRequest") CreateClientAccountRequest createClientAccountRequest) {
         CreateClientAccountServiceResponse response = new CreateClientAccountServiceResponse(858585858L);
         response.setClientAccountNumber(customerSessionBean.createClientAccount(createClientAccountRequest.getIdNumber(), 
-                Long.toString(createClientAccountRequest.getContactNumber()), createClientAccountRequest.getFirstName(), 
+                createClientAccountRequest.getContactNumber(), createClientAccountRequest.getFirstName(), 
                 createClientAccountRequest.getLastName(), createClientAccountRequest.getEmailAddress()));
         return response;
     }
