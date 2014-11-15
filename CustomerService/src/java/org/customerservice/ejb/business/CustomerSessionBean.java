@@ -15,11 +15,16 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class CustomerSessionBean {
-    @PersistenceContext(unitName = "CustomerServicePU")
+    @PersistenceContext(unitName = "HomeAffairsPU")
     private EntityManager em;
 
     public Long createClientAccount(long IdNumber, String contactNumber, String firstName, String lastName, String emailAddress) {
         Customer customer = new Customer();
+        customer.setIdentityNumber(Long.toString(IdNumber));
+        customer.setContactNumber(contactNumber);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setEmailAddress(emailAddress);
         persist(customer);
         em.refresh(customer);
         return new Long(customer.getCustomerUuid());
