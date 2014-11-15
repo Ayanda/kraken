@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://services.web.customerservice.org/" xmlns:tns="http://services.web.customerservice.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="createClientAccount" nillable="true" type="tns:createClientAccount"/>
+
+  <xs:element name="createClientAccountResponse" nillable="true" type="tns:createClientAccountResponse"/>
+
+  <xs:element name="hello" nillable="true" type="tns:hello"/>
+
+  <xs:element name="helloResponse" nillable="true" type="tns:helloResponse"/>
+
+  <xs:complexType name="createClientAccount">
+    <xs:sequence>
+      <xs:element name="createClientAccountRequest" type="tns:createClientAccountRequest" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createClientAccountRequest">
+    <xs:sequence>
+      <xs:element name="contactNumber" type="xs:long"/>
+      <xs:element name="emailAddress" type="xs:string" minOccurs="0"/>
+      <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+      <xs:element name="idNumber" type="xs:long"/>
+      <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createClientAccountResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:createClientAccountServiceResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createClientAccountServiceResponse">
+    <xs:sequence>
+      <xs:element name="clientAccountNumber" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hello">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="helloResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
