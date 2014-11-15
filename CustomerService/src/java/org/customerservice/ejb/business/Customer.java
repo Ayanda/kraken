@@ -35,9 +35,7 @@ import javax.validation.constraints.Size;
 public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "customerUuid")
     private Integer customerUuid;
     @Basic(optional = false)
