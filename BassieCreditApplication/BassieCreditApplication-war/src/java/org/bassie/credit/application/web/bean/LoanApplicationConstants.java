@@ -13,5 +13,6 @@ public class LoanApplicationConstants {
     
     public static final String START_PAGE = "welcomePrimefaces.xhtml";
     public static final String APPLY_PAGE = "apply.xhtml";
-    
+    public static final String APPROVE_PAGE = "approve.xhtml";
+    public static final String HOME_PAGE = "index.xhtml";
 }

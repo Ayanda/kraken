@@ -7,18 +7,32 @@ package org.bassie.credit.application.web.bean;
 
 import java.io.IOException;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.xml.ws.WebServiceRef;
+import org.bassie.credit.application.web.mail.Notifications;
+import org.bassie.credit.application.web.services.client.CreateClientAccountRequest;
+import org.bassie.credit.application.web.services.client.CreateClientAccountServiceResponse;
+import org.bassie.credit.application.web.services.client.CustomerServices;
+import org.bassie.credit.application.web.services.client.CustomerServices_Service;
+import org.bassie.credit.application.web.services.client.loanapproval.LoanApprovalRequest;
+import org.bassie.credit.application.web.services.client.loanapproval.LoanApprovalServiceResponse;
+import org.bassie.credit.application.web.services.client.loanapproval.LoanApprovalServices;
+import org.bassie.credit.application.web.services.client.loanapproval.LoanApprovalServices_Service;
 
 /**
  *
  * @author Ayanda
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class LoanApplicationBean {
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/LoanApprovalService/LoanApprovalServices.wsdl")
+    private LoanApprovalServices_Service service_1;
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/CustomerService/CustomerServices.wsdl")
+    private CustomerServices_Service service;
 
     private Application application;
     private String[] acceptedTerms;
@@ -32,8 +46,49 @@ public class LoanApplicationBean {
 
     public void apply() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Message", "Please give permission for a credit check."));
-        //FacesContext.getCurrentInstance().getExternalContext().redirect(LoanApplicationConstants.APPLY_PAGE);
+        CreateClientAccountRequest request = new CreateClientAccountRequest();
+        CreateClientAccountServiceResponse response = createClientAccount(request);
+        application.getCustomer().setClientAccountNumber(response.getClientAccountNumber());
+        
+        LoanApprovalRequest loanApprovalRequest = new LoanApprovalRequest();
+        loanApprovalRequest.setClientAccountNo(application.getCustomer().getClientAccountNumber());
+        loanApprovalRequest.setExpenses(application.getCustomer().getRemuneration().getExpenses());
+        loanApprovalRequest.setIncome(application.getCustomer().getRemuneration().getSalary());
+        loanApprovalRequest.setTerm(application.getTerm());
+        loanApprovalRequest.setDebtFlag(application.getCustomer().getUnderDebtCounseling());
+        LoanApprovalServiceResponse loanResponse = getLoanStatus(loanApprovalRequest);
+        application.setApplicationId(loanResponse.getApplicationId());
+        application.setStatus(loanResponse.getStatus());
+        application.setRepayment(loanResponse.getRepayment());
+        FacesContext.getCurrentInstance().getExternalContext().redirect(LoanApplicationConstants.APPROVE_PAGE);
+    }
+
+    public void acceptApplication() throws IOException {
+        new Notifications().generateNotification(application);
+        FacesContext.getCurrentInstance().getExternalContext().redirect(LoanApplicationConstants.HOME_PAGE);
+    }
+
+    public void startApplication() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect(LoanApplicationConstants.APPLY_PAGE);
+    }
+
+    private CreateClientAccountServiceResponse createClientAccount(CreateClientAccountRequest createClientAccountRequest) {
+        CustomerServices port = service.getCustomerServicesPort();
+        return port.createClientAccount(createClientAccountRequest);
+    }
+
+    private LoanApprovalServiceResponse getLoanStatus(LoanApprovalRequest getLoanApprovalRequest) {
+        LoanApprovalServices port = service_1.getLoanApprovalServicesPort();
+        return port.getLoanStatus(getLoanApprovalRequest);
+    }
+
+    public void cancelApplication() throws IOException {
+        acceptedTerms = new String[1];
+        permissions = new String[1];
+        application = new Application();
+        application.setCustomer(new Customer());
+        application.getCustomer().setRemuneration(new Remuneration());
+        FacesContext.getCurrentInstance().getExternalContext().redirect(LoanApplicationConstants.HOME_PAGE);
     }
 
     public Application getApplication() {
@@ -60,27 +115,10 @@ public class LoanApplicationBean {
         this.permissions = permissions;
     }
 
-    public void startApplication() throws IOException {
-        FacesContext context = FacesContext.getCurrentInstance();
-        if (permissions.length <= 0) {
-            context.addMessage(null, new FacesMessage("Message", "Please give permission for a credit check."));
-            FacesContext.getCurrentInstance().getExternalContext().redirect(LoanApplicationConstants.START_PAGE);
-        }
-        if (acceptedTerms.length <= 0) {
-            context.addMessage(null, new FacesMessage("Message", "Please accept our terms and conditions."));
-            FacesContext.getCurrentInstance().getExternalContext().redirect(LoanApplicationConstants.START_PAGE);
-        }
-        FacesContext.getCurrentInstance().getExternalContext().redirect(LoanApplicationConstants.APPLY_PAGE);
-    }
-
     @PostConstruct
     public void init() {
         application = new Application();
         application.setCustomer(new Customer());
         application.getCustomer().setRemuneration(new Remuneration());
-    }
-
-    public String cancelApplication() {
-        return "success";
     }
 }

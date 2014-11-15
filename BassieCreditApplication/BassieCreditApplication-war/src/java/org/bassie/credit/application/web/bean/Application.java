@@ -7,19 +7,21 @@ package org.bassie.credit.application.web.bean;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Ayanda
  */
 @ManagedBean(name = "loanApplication")
-@RequestScoped
+@SessionScoped
 public class Application {
     
-    private ApplicationStatus status;
+    private long applicationId;
+    private String status;
     private Customer customer;
     private double amount;
+    private double repayment;
     private int term;
 
     /**
@@ -27,11 +29,19 @@ public class Application {
      */
     public Application() {}
 
-    public ApplicationStatus getStatus() {
+    public long getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(long applicationId) {
+        this.applicationId = applicationId;
+    }
+    
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(ApplicationStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -51,6 +61,14 @@ public class Application {
         this.amount = amount;
     }
 
+    public double getRepayment() {
+        return repayment;
+    }
+
+    public void setRepayment(double repayment) {
+        this.repayment = repayment;
+    }
+    
     public int getTerm() {
         return term;
     }

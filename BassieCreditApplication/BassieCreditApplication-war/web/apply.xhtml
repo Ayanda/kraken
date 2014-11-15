@@ -14,17 +14,17 @@
         </h:head>
         <h:body>
             <h:outputStylesheet name="css/default.css" />
-            <p><p:graphicImage name="images/logo.jpg" /></p>
-            <p:link style="font-size: 12px" outcome="approve" value="Back"/>
+            <center><p:graphicImage name="images/bird.jpeg" height="48px" width="48px" /></center>
+            <center><b style="font-size: 30px;">Bassie Financial Services</b></center><br/>
             <p:separator style="background-color: darkcyan" />
-            Short Term Loan Application
-            <p:separator />
+            <h4>Personal Loan - New Application</h4>
+            <p:separator style="background-color: darkcyan" />
             <h:form>
                 <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true" />
                 <p:panel id="personal" header="Personal Details" style="margin-bottom:10px;">
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="idNo" value="ID Number:" />
-                        <p:inputText  id="idNo" value="#{loanApplicationBean.application.customer.identityNo}" required="true"/>
+                        <p:inputText  id="idNo" value="#{loanApplicationBean.application.customer.identityNo}" maxlength="13" required="true"/>
 
                         <p:outputLabel for="contact" value="Contact Number:" />
                         <p:inputText id="contact" value="#{loanApplicationBean.application.customer.cellPhoneNumber}" required="true"/>
@@ -69,12 +69,8 @@
                 <p:separator style="background-color: darkcyan" />
                 <div align="right">
                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                        <p:commandLink style="font-size: 12px" id="cancel" actionListener="#{loanApplicationBean.cancelApplication()}" ajax="false">
-                            <h:outputText value="Cancel" />
-                        </p:commandLink>
-                        <p:commandLink style="font-size: 12px" id="apply" actionListener="#{loanApplicationBean.apply()}" ajax="false">
-                            <h:outputText value="Apply" />
-                        </p:commandLink>
+                        <h:commandButton id="cancel" value="Cancel" actionListener="#{loanApplicationBean.cancelApplication()}"/>
+                        <h:commandButton id="apply" value="Apply" actionListener="#{loanApplicationBean.apply()}"/>
                     </h:panelGrid>
                 </div> 
             </h:form>

@@ -1,14 +1,57 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-    </h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Bassie Short Term Loans</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <h:outputStylesheet name="css/default.css" />
+            
+            <center><p:graphicImage name="images/bird.jpeg" height="48px" width="48px" /></center>
+            <center><b style="font-size: 30px;">Bassie Financial Services</b></center><br/>
+            <p:separator style="background-color: darkcyan" />
+            <h3>Financial Products</h3>
+            <p:separator style="background-color: darkcyan" />
+            <p:outputPanel deferred="true" deferredMode="visible">
+                <div>
+                    
+                    <br/><h3>Personal Loans</h3>
+                    Bassie Financial Service has a solution for you, whether you wish to consolidate your debt, top up an existing loan or apply for a new loan.
+                    <br/>18 - 65 years old (you must have repaid the loan by your 65th birthday) and earn R700 monthly after expenses and repaying the new loan.
+                    <p><b>What the Personal loan offers me</b></p>
+
+                    <p><ul><li>Loans between R1 000 and R30 000 with up to 60 months to pay</li></ul></p>
+                    <br/><b>What this allows me to do:</b>
+
+                    <ul><li>Take-a-break in January from repaying your instalment</li>
+                        <li>Settle your account early or make additional payments without any penalties</li></ul>
+
+                    <p><b>What documents do I need?</b></p>
+                    
+                    <ul><li>Valid Green bar coded South African ID</li>
+                    <li>1 month's payslip / 4 monthly payslip (if paid fortnightly or weekly)</li>
+                    <li>3 month's bank statement for new customers</li>
+                    <li>If Self employed 6 months bank statements</li>
+                    <li>Proof of residence</li></ul>
+                </div>
+            </p:outputPanel>
+            <h:form>
+                <p:separator style="background-color: darkcyan" />
+                <div align="right">
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                        <h:commandButton id="startApplication" value="New Application" action="welcomePrimefaces"/>
+                    </h:panelGrid>
+                </div> 
+            </h:form>
+        </h:body>
+    </f:view>
 </html>
 

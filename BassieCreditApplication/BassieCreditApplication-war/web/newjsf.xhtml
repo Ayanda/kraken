@@ -1,49 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Bassie Credit Application</title>
-            </f:facet>
-        </h:head>
-        <h:body>
-            <h:form>
-                <p:panel id="loan" header="Loan Application Details" style="margin-bottom:10px;">
-                    <p:messages id="messages" />
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="amount" value="How much cash do you want?" />
-                        <p:inputText id="amount" value="#{loanApplicationBean.application.amount}" required="true"/>
-
-                        <p:outputLabel for="term" value="How long do you want it for?" />
-                        <p:spinner id="term" value="#{loanApplicationBean.application.term}" stepFactor="6" min="6" max="60" required="true"/>
-
-                        <p:outputLabel for="debt" value="Are you currently undergoing Debt Counseling?" />
-                        <p:selectOneRadio id="debt" value="#{loanApplicationBean.application.customer.underDebtCounseling}">
-                            <f:selectItem itemLabel="Yes" itemValue="Yes" />
-                            <f:selectItem itemLabel="No" itemValue="No" />
-                        </p:selectOneRadio>
-                    </h:panelGrid>
-                </p:panel>
-                <p:panel id="remunaration" header="Remuneration Details" style="margin-bottom:10px;">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="salary" value="Monthly Salary" />
-                        <p:inputText id="salary" value="#{loanApplicationBean.application.customer.remuneration.salary}" required="true"/>
-
-                        <p:outputLabel for="expenses" value="Total Expenses" />
-                        <p:inputText id="expenses" value="#{loanApplicationBean.application.customer.remuneration.expenses}" required="true"/>
-                    </h:panelGrid>
-                </p:panel>
-                <p:commandButton type="Submit" value="Apply" action="#{loanApplicationBean.apply()}" />
-            </h:form>
-
-        </h:body>
-
-    </f:view>
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </h:body>
 </html>
-

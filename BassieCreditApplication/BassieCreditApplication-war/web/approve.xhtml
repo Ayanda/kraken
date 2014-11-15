@@ -14,11 +14,11 @@
         </h:head>
         <h:body>
             <h:outputStylesheet name="css/default.css" />
-            <p><p:graphicImage name="images/logo.jpg" /></p>
-            <p:link style="font-size: 12px" outcome="index" value="Back"/>
+            <center><p:graphicImage name="images/bird.jpeg" height="48px" width="48px" /></center>
+            <center><b style="font-size: 30px;">Bassie Financial Services</b></center><br/>
             <p:separator style="background-color: darkcyan" />
-            Short Term Loan Application
-            <p:separator />
+            <h4>Personal Loan - Offer</h4>
+            <p:separator style="background-color: darkcyan" />
             <p:messages id="messages" />
             <h:form>
                 <p:panel id="personal" header="Personal Details" style="margin-bottom:10px;">
@@ -32,6 +32,9 @@
                 </p:panel>
                 <p:panel id="customer" header="Customer Details" style="margin-bottom:10px;">
                     <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="clientNo" value="Account No:" />
+                        <p:inputText id="clientNo" value="#{loanApplicationBean.application.customer.clientAccountNumber}" required="true" readonly="true"/>
+
                         <h:outputLabel for="firstName" value="First Name:" />
                         <p:inputText id="firstName" value="#{loanApplicationBean.application.customer.firstName}" required="true" readonly="true"/>
 
@@ -54,19 +57,15 @@
                         <p:inputText id="applicationStatus" value="#{loanApplicationBean.application.status}" readonly="true" required="true"/>
                         
                         <p:outputLabel for="repayment" value="Monlty Repayment Installment:" />
-                        <p:inputText id="repayment" value="#{loanApplicationBean.application.status}" readonly="true" required="true"/>
+                        <p:inputText id="repayment" value="#{loanApplicationBean.application.repayment}" readonly="true" required="true"/>
                         
                     </h:panelGrid>
                 </p:panel>
                 <p:separator style="background-color: darkcyan" />
                 <div align="right">
                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                        <p:commandLink style="font-size: 12px" id="cancel" actionListener="#{buttonView.buttonAction}" ajax="false">
-                            <h:outputText value="Decline" />
-                        </p:commandLink>
-                        <p:commandLink style="font-size: 12px" id="start" actionListener="#{buttonView.buttonAction}" ajax="false">
-                            <h:outputText value="Accept" />
-                        </p:commandLink>
+                        <h:commandButton id="decline" value="Decline" actionListener="#{loanApplicationBean.cancelApplication()}"/>
+                        <h:commandButton id="accept" value="Accept" actionListener="#{loanApplicationBean.acceptApplication()}"/>
                     </h:panelGrid>
                 </div> 
             </h:form>

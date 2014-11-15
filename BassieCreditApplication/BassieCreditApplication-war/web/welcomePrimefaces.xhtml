@@ -9,20 +9,20 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Bassie Short Term Loan Application</title>
+                <title>Bassie Financial Service</title>
             </f:facet>
         </h:head>
         <h:body>
             <h:outputStylesheet name="css/default.css" />
-            <p><p:graphicImage name="images/logo.jpg" /></p>
-            <p:link style="font-size: 12px" outcome="apply" value="Back"/>
+            <center><p:graphicImage name="images/bird.jpeg" height="48px" width="48px" /></center>
+            <center><b style="font-size: 30px;">Bassie Financial Services</b></center><br/>
             <p:separator style="background-color: darkcyan" />
-            Short Term Loan Application
-            <p:separator />
+            <h3>Personal Loan</h3>
+            <p:separator style="background-color: darkcyan" />
             <p:outputPanel deferred="true" deferredMode="visible">
                 <div><ol type="1"><li><p><b>Completion time:</b></p>
                             <ul>
-                                <li>The pre-screening application process which will determine whether you qualify for an FNB loan will take about 2 minutes.</li>
+                                <li>The pre-screening application process which will determine whether you qualify for an Bassie Financial Personal loan will take about 2 minutes.</li>
                                 <li>After pre-screening and you are not declined, it will take about 8 minutes to complete the rest of the loan application.</li>
                                 <li>The application process will be as follows:
                                     <ol type="1">
@@ -54,17 +54,17 @@
             <h:form>
                 <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true" />
                 <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
-                    <p:selectManyCheckbox id="permission" value="#{loanApplicationBean.permissions}">
+                    <p:selectManyCheckbox id="permission" value="#{loanApplicationBean.permissions}" required="true">
                         <f:selectItem itemLabel="I give permission for you to do a credit check" itemValue="permission" />
                     </p:selectManyCheckbox>
-                    <p:selectManyCheckbox style="" id="terms" value="#{loanApplicationBean.acceptedTerms}">
+                    <p:selectManyCheckbox style="" id="terms" value="#{loanApplicationBean.acceptedTerms}" required="true">
                         <f:selectItem itemLabel="I have read and agree to the Terms and Conditions" itemValue="terms" />
                     </p:selectManyCheckbox>
                 </h:panelGrid>
                 <p:separator style="background-color: darkcyan" />
                 <div align="right">
                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                        <h:commandButton id="cancel" value="Cancel" actionListener="#{loanApplicationBean.cancelApplication()}"/>
+                        <h:commandButton id="cancel" value="Back" action="index.xhtml"/>
                        <h:commandButton id="startApplication" value="Start Application" actionListener="#{loanApplicationBean.startApplication()}"/>
                     </h:panelGrid>
                 </div> 
