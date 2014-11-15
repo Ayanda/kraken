@@ -16,7 +16,7 @@
 
 <xs:complexType name="createClientAccountRequest">
 <xs:sequence>
-<xs:element name="contactNumber" type="xs:long"/>
+<xs:element name="contactNumber" type="xs:string" minOccurs="0"/>
 <xs:element name="emailAddress" type="xs:string" minOccurs="0"/>
 <xs:element name="firstName" type="xs:string" minOccurs="0"/>
 <xs:element name="idNumber" type="xs:long"/>

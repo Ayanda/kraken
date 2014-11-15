@@ -47,6 +47,11 @@ public class LoanApplicationBean {
     public void apply() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
         CreateClientAccountRequest request = new CreateClientAccountRequest();
+        request.setContactNumber(application.getCustomer().getCellPhoneNumber());
+        request.setIdNumber(application.getCustomer().getIdentityNo());
+        request.setFirstName(application.getCustomer().getFirstName());
+        request.setLastName(application.getCustomer().getLastName());
+        request.setEmailAddress(application.getCustomer().getEmailAddress());
         CreateClientAccountServiceResponse response = createClientAccount(request);
         application.getCustomer().setClientAccountNumber(response.getClientAccountNumber());
         

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost:8080/CustomerService/CustomerServices?wsdl" uri="src/conf/xml-resources/web-service-references/CustomerServices/wsdl/localhost_8080/CustomerService/CustomerServices.wsdl"/>
-    <system systemId="http://localhost:8080/CustomerService/CustomerServices?xsd=1" uri="src/conf/xml-resources/web-service-references/CustomerServices/wsdl/localhost_8080/CustomerService/CustomerServices.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/LoanApprovalService/LoanApprovalServices?wsdl" uri="src/conf/xml-resources/web-service-references/LoanApprovalServices/wsdl/localhost_8080/LoanApprovalService/LoanApprovalServices.wsdl"/>
     <system systemId="http://localhost:8080/LoanApprovalService/LoanApprovalServices?xsd=1" uri="src/conf/xml-resources/web-service-references/LoanApprovalServices/wsdl/localhost_8080/LoanApprovalService/LoanApprovalServices.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/CustomerService/CustomerServices?wsdl" uri="src/conf/xml-resources/web-service-references/CustomerServices/wsdl/localhost_8080/CustomerService/CustomerServices.wsdl"/>
+    <system systemId="http://localhost:8080/CustomerService/CustomerServices?xsd=1" uri="src/conf/xml-resources/web-service-references/CustomerServices/wsdl/localhost_8080/CustomerService/CustomerServices.xsd_1.xsd"/>
 </catalog>

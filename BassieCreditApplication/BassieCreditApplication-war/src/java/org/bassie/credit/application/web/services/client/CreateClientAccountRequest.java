@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="contactNumber" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="contactNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="emailAddress" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="idNumber" type="{http://www.w3.org/2001/XMLSchema}long"/>
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class CreateClientAccountRequest {
 
-    protected long contactNumber;
+    protected String contactNumber;
     protected String emailAddress;
     protected String firstName;
     protected long idNumber;
@@ -48,16 +48,24 @@ public class CreateClientAccountRequest {
     /**
      * Gets the value of the contactNumber property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public long getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
     /**
      * Sets the value of the contactNumber property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setContactNumber(long value) {
+    public void setContactNumber(String value) {
         this.contactNumber = value;
     }
 
