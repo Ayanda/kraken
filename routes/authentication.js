@@ -107,8 +107,17 @@ router.get('/setup', function (req, res, next) {
             person.save(function(err){
                 if (err) res.send(err);
                 fnbAccount.save(function(err){
-                  if (err) res.send(err);
-                });
+                                  if (err) res.send(err);
+                                  fnbAccountDetail.save(function(err){
+                                     if (err) res.send(err);
+                                  });
+                                });
+                                nedbankAccount.save(function(err){
+                                    if (err) res.send(err);
+                                    nedbankAccountDetail.save(function(err){
+                                      if (err) res.send(err);
+                                    });
+                                });
             });
             profileCategory.save(function(err){
                             if (err) res.send(err);
