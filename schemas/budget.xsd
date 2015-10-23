@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="unqualified" targetNamespace="http://www.codersconnect.co.za/budget"
+           xmlns="http://www.codersconnect.co.za/budget">
+    <xs:element name="user" type="user"/>
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="username" type="xs:string" minOccurs="1"/>
+            <xs:element name="password" type="xs:string" minOccurs="1"/>
+            <xs:element name="email-address" type="xs:string" minOccurs="1"/>
+            <xs:element name="user-profile-list" type="user-profile-list"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="user-profile-list">
+        <xs:sequence>
+            <xs:element name="profile" type="profile" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="profile">
+        <xs:sequence>
+            <xs:element name="profile-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="person" type="person" minOccurs="1"/>
+            <xs:element name="budget-category-list" type="budget-category-list" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="person">
+        <xs:sequence>
+            <xs:element name="person-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="first-name" type="xs:string" minOccurs="1"/>
+            <xs:element name="last-name" type="xs:string" minOccurs="1"/>
+            <xs:element name="email-address" type="xs:string"/>
+            <xs:element name="account-list" type="account-list"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="account-list">
+        <xs:sequence>
+            <xs:element name="account" type="account" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="account">
+        <xs:sequence>
+            <xs:element name="account-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="name" type="xs:string" minOccurs="1"/>
+            <xs:element name="description" type="xs:string" minOccurs="1"/>
+            <xs:element name="banking-details" type="banking-details"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="budget-category-list">
+        <xs:sequence>
+            <xs:element name="budget-category-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="category-description" type="xs:string" minOccurs="1"/>
+            <xs:element name="budget-list" type="budget-list" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="budget-list">
+        <xs:sequence>
+            <xs:element name="budget" type="budget" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="budget">
+        <xs:sequence>
+            <xs:element name="budget-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="total-expenses-amount" type="xs:decimal" minOccurs="1" default="00.0"/>
+            <xs:element name="total-income-amount" type="xs:decimal" minOccurs="1" default="00.0"/>
+            <xs:element name="budget-expenses-list" type="budget-expense-list"/>
+            <xs:element name="budget-income-list" type="budget-income-list"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="budget-income-list">
+        <xs:sequence>
+            <xs:element name="income" type="income-source" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="income-source">
+        <xs:sequence>
+            <xs:element name="income-source-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="description" type="xs:string" minOccurs="1"/>
+            <xs:element name="amount" type="xs:decimal" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="budget-expense-list">
+        <xs:sequence>
+            <xs:element name="expense" type="expense" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="expense">
+        <xs:sequence>
+            <xs:element name="expense-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="description" type="xs:string" minOccurs="1"/>
+            <xs:element name="category" type="category" minOccurs="1"/>
+            <xs:element name="amount" type="xs:decimal" minOccurs="1" default="00.0"/>
+            <xs:element name="payment-details" type="banking-details"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="banking-details">
+        <xs:sequence>
+            <xs:element name="banking-details-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="bank-name" type="xs:string" minOccurs="1"/>
+            <xs:element name="branch-name" type="xs:string" minOccurs="1"/>
+            <xs:element name="branch-code" type="xs:int" minOccurs="1"/>
+            <xs:element name="account-type" type="banking-details-account-types"/>
+            <xs:element name="account-no" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="banking-details-account-types">
+        <xs:sequence>
+            <xs:element name="account-type-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="description" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="category">
+        <xs:sequence>
+            <xs:element name="category-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="name" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="budget-frequency">
+        <xs:sequence>
+            <xs:element name="budget-frequency-id" type="xs:long" minOccurs="1"/>
+            <xs:element name="description" type="xs:string" minOccurs="1" default="Monthly"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
